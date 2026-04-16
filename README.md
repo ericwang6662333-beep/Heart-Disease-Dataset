@@ -1,27 +1,35 @@
-README: Heart Disease Prediction Project
-Overview
-This project predicts the presence of heart disease using the Cleveland dataset (13 clinical features). It builds a Deep Learning model (ANN) and compares its performance against a traditional Machine Learning baseline (Random Forest).
+# Heart Disease Prediction using Deep Learning
 
-Project Structure
-Data Loading: Imports the raw dataset into pandas.
+## Overview
+This project predicts the presence of heart disease based on clinical measurements using the Cleveland Heart Disease dataset. It implements a Deep Learning model (Feedforward Artificial Neural Network) and compares its performance against a traditional Machine Learning baseline (Random Forest Classifier).
 
-Preprocessing: Cleans missing values, standardizes numerical features, and splits the data (80% training / 20% testing).
+## Dataset
+* **Source:** Cleveland Heart Disease dataset (derived from the UCI Machine Learning Repository).
+* **Features:** 13 clinical attributes (e.g., age, resting blood pressure, cholesterol).
+* **Target:** Binary classification (0 = No Heart Disease, 1 = Heart Disease Present).
 
-Model Design: Constructs a Feedforward Neural Network (2 hidden layers, ReLU activation, Dropout layer).
+## Project Structure
+The Jupyter Notebook is organized into the following sequential sections:
+1. **Data Loading:** Imports the dataset via a public CSV link into a pandas DataFrame.
+2. **Data Preprocessing:** Cleans missing values, standardizes numerical features using `StandardScaler`, and splits the data into 80% training and 20% testing sets.
+3. **Model Architecture:** Defines the PyTorch ANN architecture (Linear layers, ReLU activation, and Dropout regularization).
+4. **Model Training:** Trains the network over 50 epochs using the Adam optimizer and `BCEWithLogitsLoss`.
+5. **Evaluation:** Evaluates the ANN on the test set, outputting Accuracy, a Classification Report, and a Confusion Matrix.
+6. **Baseline Comparison:** Trains and evaluates a Random Forest classifier on the same data for objective benchmarking.
 
-Training: Trains the ANN for 50 epochs using the Adam optimizer.
+## Prerequisites
+The codebase relies on the following standard Python libraries:
+* `pandas`
+* `numpy`
+* `torch`
+* `scikit-learn`
 
-Evaluation: Evaluates the ANN using a confusion matrix and classification report, with a strict focus on minimizing False Negatives.
+## Execution Guide (Azure Machine Learning)
+This notebook is designed to run seamlessly within Azure Machine Learning Studio without requiring local environment configuration.
 
-Baseline Comparison: Trains a Random Forest classifier on the same data for objective benchmarking.
-
-How to Run in Azure ML
-Log in to Azure Machine Learning Studio and upload this Jupyter Notebook to your workspace.
-
-In the top right corner, set the kernel to Python 3.10 - AzureML.
-
-Wait for the kernel to connect (a standard CPU instance is sufficient).
-
-Click Run All in the top toolbar.
-
-Scroll through the notebook to see the data processing steps, training loss, and final evaluation metrics.
+1. Log in to **Azure Machine Learning Studio** and navigate to your compute instance.
+2. Upload the Jupyter Notebook file to your working directory and open it.
+3. In the kernel selection menu at the top right of the interface, select the **Python 3.10 - AzureML** kernel.
+4. Wait for the kernel status to display as "Connected" or "Ready" (A standard CPU compute instance is sufficient; GPU acceleration is not required for this dataset).
+5. Click the **Run All** button in the top toolbar.
+6. The notebook will execute sequentially from top to bottom. Scroll down to view the automated data processing steps, training loss logs, and the final evaluation metrics.
